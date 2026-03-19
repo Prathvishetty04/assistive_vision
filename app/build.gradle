@@ -31,6 +31,8 @@ android {
         applicationId "org.tensorflow.lite.examples.objectdetection"
         minSdkVersion 26
         // UPDATED SDK VERSION
+        renderscriptTargetApi 21
+        renderscriptSupportModeEnabled true
         targetSdkVersion 34
         versionCode 1
         versionName "1.0.0"

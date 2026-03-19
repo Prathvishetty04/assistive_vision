@@ -1,20 +1,5 @@
-/*
- * Copyright 2022 The TensorFlow Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package org.tensorflow.lite.examples.objectdetection.fragments
+
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -52,8 +37,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     private val TAG = "CameraFragment"
 
     private var _fragmentCameraBinding: FragmentCameraBinding? = null
-    private val fragmentCameraBinding
-        get() = _fragmentCameraBinding!!
+    private val fragmentCameraBinding get() = _fragmentCameraBinding!!
 
     private lateinit var objectDetectorHelper: ObjectDetectorHelper
     private lateinit var bitmapBuffer: Bitmap
@@ -63,12 +47,10 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     private var cameraProvider: ProcessCameraProvider? = null
     private lateinit var cameraExecutor: ExecutorService
 
-    // Variables for navigation feature
     private lateinit var sensorHelper: SensorHelper
     private var objectMap = mutableMapOf<String, Int>()
     private var isScanning = false
 
-    // Launcher for speech recognition
     private val speechRecognizerLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -92,6 +74,9 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     }
 
     override fun onDestroyView() {
+        // Stop detection and unbind camera before nullifying binding
+        imageAnalyzer?.clearAnalyzer()
+        cameraProvider?.unbindAll()
         _fragmentCameraBinding = null
         super.onDestroyView()
         cameraExecutor.shutdown()
@@ -121,9 +106,9 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
             setUpCamera()
         }
 
-        // Set up the button listeners
+        // 1. SCAN BUTTON
         fragmentCameraBinding.scanButton.setOnClickListener {
-            isScanning = !isScanning // Toggle scanning mode
+            isScanning = !isScanning
             if (isScanning) {
                 objectMap.clear()
                 objectDetectorHelper.speak("Starting room scan. Please turn slowly.")
@@ -132,12 +117,23 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
             }
         }
 
+        // 2. VOICE COMMAND BUTTON
         fragmentCameraBinding.voiceCommandButton.setOnClickListener {
             startVoiceCommand()
         }
 
+        // 3. AR MODE BUTTON (Safe Navigation)
         fragmentCameraBinding.arModeButton.setOnClickListener {
-            findNavController().navigate(R.id.action_cameraFragment_to_ARFragment)
+            // Clean up CameraX immediately to release hardware for ARCore
+            imageAnalyzer?.clearAnalyzer()
+            cameraProvider?.unbindAll()
+
+            // Short delay to allow hardware reset
+            view.postDelayed({
+                if (isAdded) {
+                    findNavController().navigate(R.id.action_cameraFragment_to_ARFragment)
+                }
+            }, 100)
         }
     }
 
@@ -154,7 +150,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
 
     @SuppressLint("UnsafeOptInUsageError")
     private fun bindCameraUseCases() {
-        val cameraProvider = cameraProvider ?: throw IllegalStateException("Camera initialization failed.")
+        val cameraProvider = cameraProvider ?: return
         val cameraSelector = CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
 
         preview = Preview.Builder()
@@ -208,29 +204,31 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         }
     }
 
-    // THIS IS THE CORRECTED AND FINAL VERSION OF onResults
     override fun onResults(
         results: List<ObjectDetectorHelper.Detection>?,
         inferenceTime: Long,
         imageHeight: Int,
         imageWidth: Int
     ) {
-        fragmentCameraBinding.root.post {
-            // The line for inferenceTimeVal has been deleted
+        // CRITICAL SAFETY CHECK: Prevent crash during fragment transition
+        if (_fragmentCameraBinding == null) return
 
-            fragmentCameraBinding.overlay.setResults(
-                results ?: emptyList(),
-                imageHeight,
-                imageWidth
-            )
+        activity?.runOnUiThread {
+            _fragmentCameraBinding?.let { binding ->
+                binding.overlay.setResults(
+                    results ?: emptyList(),
+                    imageHeight,
+                    imageWidth
+                )
 
-            if (isScanning) {
-                updateMapWithDetections(results)
+                if (isScanning) {
+                    updateMapWithDetections(results)
+                }
+                binding.overlay.invalidate()
             }
-
-            fragmentCameraBinding.overlay.invalidate()
         }
     }
+
     override fun onError(error: String) {
         activity?.runOnUiThread {
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
@@ -268,9 +266,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
                 difference <= 180 -> "The $targetObject is to your right. Please turn right."
                 else -> "The $targetObject is to your left. Please turn left."
             }
-
             objectDetectorHelper.speak(instruction)
-
         } else {
             objectDetectorHelper.speak("Sorry, I have not seen a $targetObject in this room.")
         }

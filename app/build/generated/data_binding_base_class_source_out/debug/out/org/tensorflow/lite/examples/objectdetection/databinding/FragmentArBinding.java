@@ -4,7 +4,10 @@ package org.tensorflow.lite.examples.objectdetection.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,6 +16,7 @@ import androidx.viewbinding.ViewBindings;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
+import org.tensorflow.lite.examples.objectdetection.OverlayView;
 import org.tensorflow.lite.examples.objectdetection.R;
 
 public final class FragmentArBinding implements ViewBinding {
@@ -22,10 +26,36 @@ public final class FragmentArBinding implements ViewBinding {
   @NonNull
   public final FrameLayout arSurfaceViewContainer;
 
+  @NonNull
+  public final Button btnFind;
+
+  @NonNull
+  public final Button btnScan;
+
+  @NonNull
+  public final Button btnVoice;
+
+  @NonNull
+  public final LinearLayout controlPanel;
+
+  @NonNull
+  public final OverlayView overlay;
+
+  @NonNull
+  public final TextView tvStatus;
+
   private FragmentArBinding(@NonNull ConstraintLayout rootView,
-      @NonNull FrameLayout arSurfaceViewContainer) {
+      @NonNull FrameLayout arSurfaceViewContainer, @NonNull Button btnFind, @NonNull Button btnScan,
+      @NonNull Button btnVoice, @NonNull LinearLayout controlPanel, @NonNull OverlayView overlay,
+      @NonNull TextView tvStatus) {
     this.rootView = rootView;
     this.arSurfaceViewContainer = arSurfaceViewContainer;
+    this.btnFind = btnFind;
+    this.btnScan = btnScan;
+    this.btnVoice = btnVoice;
+    this.controlPanel = controlPanel;
+    this.overlay = overlay;
+    this.tvStatus = tvStatus;
   }
 
   @Override
@@ -61,7 +91,44 @@ public final class FragmentArBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentArBinding((ConstraintLayout) rootView, arSurfaceViewContainer);
+      id = R.id.btnFind;
+      Button btnFind = ViewBindings.findChildViewById(rootView, id);
+      if (btnFind == null) {
+        break missingId;
+      }
+
+      id = R.id.btnScan;
+      Button btnScan = ViewBindings.findChildViewById(rootView, id);
+      if (btnScan == null) {
+        break missingId;
+      }
+
+      id = R.id.btnVoice;
+      Button btnVoice = ViewBindings.findChildViewById(rootView, id);
+      if (btnVoice == null) {
+        break missingId;
+      }
+
+      id = R.id.controlPanel;
+      LinearLayout controlPanel = ViewBindings.findChildViewById(rootView, id);
+      if (controlPanel == null) {
+        break missingId;
+      }
+
+      id = R.id.overlay;
+      OverlayView overlay = ViewBindings.findChildViewById(rootView, id);
+      if (overlay == null) {
+        break missingId;
+      }
+
+      id = R.id.tvStatus;
+      TextView tvStatus = ViewBindings.findChildViewById(rootView, id);
+      if (tvStatus == null) {
+        break missingId;
+      }
+
+      return new FragmentArBinding((ConstraintLayout) rootView, arSurfaceViewContainer, btnFind,
+          btnScan, btnVoice, controlPanel, overlay, tvStatus);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

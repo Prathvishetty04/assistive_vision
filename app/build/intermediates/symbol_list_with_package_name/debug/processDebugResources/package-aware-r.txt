@@ -3285,6 +3285,9 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btnFind
+id btnScan
+id btnVoice
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3319,6 +3322,7 @@ id content
 id contentPanel
 id contiguous
 id continuousVelocity
+id controlPanel
 id coordinator
 id cos
 id counterclockwise
@@ -3689,6 +3693,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvStatus
 id unchecked
 id uniform
 id unlabeled

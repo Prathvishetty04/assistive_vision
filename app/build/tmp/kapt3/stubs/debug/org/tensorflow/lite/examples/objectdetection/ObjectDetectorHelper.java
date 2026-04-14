@@ -1,14 +1,16 @@
 package org.tensorflow.lite.examples.objectdetection;
 
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000d\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0007\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010 \n\u0002\u0010\u000e\n\u0002\b\u0011\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u0014\n\u0002\b\u0007\u0018\u00002\u00020\u0001:\u000289B5\u0012\b\b\u0002\u0010\u0002\u001a\u00020\u0003\u0012\b\b\u0002\u0010\u0004\u001a\u00020\u0005\u0012\b\b\u0002\u0010\u0006\u001a\u00020\u0005\u0012\u0006\u0010\u0007\u001a\u00020\b\u0012\b\u0010\t\u001a\u0004\u0018\u00010\n\u00a2\u0006\u0002\u0010\u000bJ\u0010\u0010%\u001a\u00020&2\u0006\u0010\'\u001a\u00020(H\u0002J\u0016\u0010)\u001a\u00020*2\u0006\u0010+\u001a\u00020(2\u0006\u0010,\u001a\u00020\u0005J\u0010\u0010-\u001a\u00020*2\u0006\u0010.\u001a\u00020\u0005H\u0016J!\u0010/\u001a\b\u0012\u0004\u0012\u0002000\u00112\f\u00101\u001a\b\u0012\u0004\u0012\u00020302H\u0002\u00a2\u0006\u0002\u00104J\b\u00105\u001a\u00020*H\u0002J\u000e\u00106\u001a\u00020*2\u0006\u00107\u001a\u00020\u0012R\u0011\u0010\u0007\u001a\u00020\b\u00a2\u0006\b\n\u0000\u001a\u0004\b\f\u0010\rR\u0010\u0010\u000e\u001a\u0004\u0018\u00010\u000fX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0010\u001a\b\u0012\u0004\u0012\u00020\u00120\u0011X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010\u0006\u001a\u00020\u0005X\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0013\u0010\u0014\"\u0004\b\u0015\u0010\u0016R\u000e\u0010\u0017\u001a\u00020\u0005X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0018\u001a\u00020\u0005X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010\u0004\u001a\u00020\u0005X\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0019\u0010\u0014\"\u0004\b\u001a\u0010\u0016R\u0013\u0010\t\u001a\u0004\u0018\u00010\n\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001b\u0010\u001cR\u000e\u0010\u001d\u001a\u00020\u0005X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u001e\u001a\u00020\u0005X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010\u0002\u001a\u00020\u0003X\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u001f\u0010 \"\u0004\b!\u0010\"R\u0010\u0010#\u001a\u0004\u0018\u00010$X\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006:"}, d2 = {"Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper;", "Landroid/speech/tts/TextToSpeech$OnInitListener;", "threshold", "", "numThreads", "", "maxResults", "context", "Landroid/content/Context;", "objectDetectorListener", "Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$DetectorListener;", "(FIILandroid/content/Context;Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$DetectorListener;)V", "getContext", "()Landroid/content/Context;", "interpreter", "Lorg/tensorflow/lite/Interpreter;", "labels", "", "", "getMaxResults", "()I", "setMaxResults", "(I)V", "numChannel", "numElements", "getNumThreads", "setNumThreads", "getObjectDetectorListener", "()Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$DetectorListener;", "tensorHeight", "tensorWidth", "getThreshold", "()F", "setThreshold", "(F)V", "tts", "Landroid/speech/tts/TextToSpeech;", "convertBitmapToByteBuffer", "Ljava/nio/ByteBuffer;", "bitmap", "Landroid/graphics/Bitmap;", "detect", "", "image", "imageRotation", "onInit", "status", "processOutput", "Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$Detection;", "modelOutput", "", "", "([[F)Ljava/util/List;", "setupObjectDetector", "speak", "message", "Detection", "DetectorListener", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000j\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0007\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010 \n\u0002\u0010\u000e\n\u0002\b\u0011\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u0014\n\u0002\b\b\u0018\u00002\u00020\u0001:\u0003:;<BA\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\b\u0010\u0004\u001a\u0004\u0018\u00010\u0005\u0012\b\b\u0002\u0010\u0006\u001a\u00020\u0007\u0012\b\b\u0002\u0010\b\u001a\u00020\t\u0012\b\b\u0002\u0010\n\u001a\u00020\t\u0012\n\b\u0002\u0010\u000b\u001a\u0004\u0018\u00010\f\u00a2\u0006\u0002\u0010\rJ\u0010\u0010\'\u001a\u00020(2\u0006\u0010)\u001a\u00020*H\u0002J\u0016\u0010+\u001a\u00020,2\u0006\u0010-\u001a\u00020*2\u0006\u0010.\u001a\u00020\tJ\u0010\u0010/\u001a\u00020,2\u0006\u00100\u001a\u00020\tH\u0016J!\u00101\u001a\b\u0012\u0004\u0012\u0002020\u00132\f\u00103\u001a\b\u0012\u0004\u0012\u00020504H\u0002\u00a2\u0006\u0002\u00106J\b\u00107\u001a\u00020,H\u0002J\u000e\u00108\u001a\u00020,2\u0006\u00109\u001a\u00020\u0014R\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u000e\u0010\u000fR\u0010\u0010\u0010\u001a\u0004\u0018\u00010\u0011X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0012\u001a\b\u0012\u0004\u0012\u00020\u00140\u0013X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010\n\u001a\u00020\tX\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0015\u0010\u0016\"\u0004\b\u0017\u0010\u0018R\u000e\u0010\u0019\u001a\u00020\tX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u001a\u001a\u00020\tX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010\b\u001a\u00020\tX\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u001b\u0010\u0016\"\u0004\b\u001c\u0010\u0018R\u0013\u0010\u0004\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001d\u0010\u001eR\u0010\u0010\u000b\u001a\u0004\u0018\u00010\fX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u001f\u001a\u00020\tX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010 \u001a\u00020\tX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010\u0006\u001a\u00020\u0007X\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b!\u0010\"\"\u0004\b#\u0010$R\u0010\u0010%\u001a\u0004\u0018\u00010&X\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006="}, d2 = {"Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper;", "Landroid/speech/tts/TextToSpeech$OnInitListener;", "context", "Landroid/content/Context;", "objectDetectorListener", "Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$DetectorListener;", "threshold", "", "numThreads", "", "maxResults", "spatialCallback", "Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$SpatialCallback;", "(Landroid/content/Context;Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$DetectorListener;FIILorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$SpatialCallback;)V", "getContext", "()Landroid/content/Context;", "interpreter", "Lorg/tensorflow/lite/Interpreter;", "labels", "", "", "getMaxResults", "()I", "setMaxResults", "(I)V", "numChannel", "numElements", "getNumThreads", "setNumThreads", "getObjectDetectorListener", "()Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$DetectorListener;", "tensorHeight", "tensorWidth", "getThreshold", "()F", "setThreshold", "(F)V", "tts", "Landroid/speech/tts/TextToSpeech;", "convertBitmapToByteBuffer", "Ljava/nio/ByteBuffer;", "bitmap", "Landroid/graphics/Bitmap;", "detect", "", "image", "imageRotation", "onInit", "status", "processOutput", "Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$Detection;", "modelOutput", "", "", "([[F)Ljava/util/List;", "setupObjectDetector", "speak", "message", "Detection", "DetectorListener", "SpatialCallback", "app_debug"})
 public final class ObjectDetectorHelper implements android.speech.tts.TextToSpeech.OnInitListener {
-    private float threshold;
-    private int numThreads;
-    private int maxResults;
     @org.jetbrains.annotations.NotNull()
     private final android.content.Context context = null;
     @org.jetbrains.annotations.Nullable()
     private final org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper.DetectorListener objectDetectorListener = null;
+    private float threshold;
+    private int numThreads;
+    private int maxResults;
+    @org.jetbrains.annotations.Nullable()
+    private final org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper.SpatialCallback spatialCallback = null;
     @org.jetbrains.annotations.Nullable()
     private org.tensorflow.lite.Interpreter interpreter;
     @org.jetbrains.annotations.NotNull()
@@ -20,10 +22,21 @@ public final class ObjectDetectorHelper implements android.speech.tts.TextToSpee
     private int numChannel = 0;
     private int numElements = 0;
     
-    public ObjectDetectorHelper(float threshold, int numThreads, int maxResults, @org.jetbrains.annotations.NotNull()
+    public ObjectDetectorHelper(@org.jetbrains.annotations.NotNull()
     android.content.Context context, @org.jetbrains.annotations.Nullable()
-    org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper.DetectorListener objectDetectorListener) {
+    org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper.DetectorListener objectDetectorListener, float threshold, int numThreads, int maxResults, @org.jetbrains.annotations.Nullable()
+    org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper.SpatialCallback spatialCallback) {
         super();
+    }
+    
+    @org.jetbrains.annotations.NotNull()
+    public final android.content.Context getContext() {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper.DetectorListener getObjectDetectorListener() {
+        return null;
     }
     
     public final float getThreshold() {
@@ -45,16 +58,6 @@ public final class ObjectDetectorHelper implements android.speech.tts.TextToSpee
     }
     
     public final void setMaxResults(int p0) {
-    }
-    
-    @org.jetbrains.annotations.NotNull()
-    public final android.content.Context getContext() {
-        return null;
-    }
-    
-    @org.jetbrains.annotations.Nullable()
-    public final org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper.DetectorListener getObjectDetectorListener() {
-        return null;
     }
     
     @java.lang.Override()
@@ -160,5 +163,17 @@ public final class ObjectDetectorHelper implements android.speech.tts.TextToSpee
         
         public abstract void onResults(@org.jetbrains.annotations.Nullable()
         java.util.List<org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper.Detection> results, long inferenceTime, int imageHeight, int imageWidth);
+    }
+    
+    /**
+     * Separate callback interface used exclusively by CameraFragment to feed
+     * detections into the spatial mapping pipeline without touching the UI
+     * result pipeline (DetectorListener).
+     */
+    @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\"\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\bf\u0018\u00002\u00020\u0001J&\u0010\u0002\u001a\u00020\u00032\f\u0010\u0004\u001a\b\u0012\u0004\u0012\u00020\u00060\u00052\u0006\u0010\u0007\u001a\u00020\b2\u0006\u0010\t\u001a\u00020\bH&\u00a8\u0006\n"}, d2 = {"Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$SpatialCallback;", "", "onDetectionsForSpatialMap", "", "detections", "", "Lorg/tensorflow/lite/examples/objectdetection/ObjectDetectorHelper$Detection;", "imageHeight", "", "imageWidth", "app_debug"})
+    public static abstract interface SpatialCallback {
+        
+        public abstract void onDetectionsForSpatialMap(@org.jetbrains.annotations.NotNull()
+        java.util.List<org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper.Detection> detections, int imageHeight, int imageWidth);
     }
 }

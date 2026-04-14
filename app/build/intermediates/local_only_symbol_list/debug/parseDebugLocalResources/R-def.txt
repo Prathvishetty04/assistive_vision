@@ -35,7 +35,6 @@ id ar_surface_view_container
 id btnFind
 id btnScan
 id btnVoice
-id camera_container
 id camera_fragment
 id controlPanel
 id inference_time_val
@@ -45,6 +44,7 @@ id overlay
 id permissions_fragment
 id scanButton
 id tvStatus
+id tv_status
 id view_finder
 id voiceCommandButton
 integer bottom_sheet_control_text_min_ems

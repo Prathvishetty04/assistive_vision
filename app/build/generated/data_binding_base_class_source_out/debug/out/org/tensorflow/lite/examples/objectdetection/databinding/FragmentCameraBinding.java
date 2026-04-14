@@ -5,13 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.camera.view.PreviewView;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -20,42 +20,41 @@ import org.tensorflow.lite.examples.objectdetection.R;
 
 public final class FragmentCameraBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
   public final Button arModeButton;
 
   @NonNull
-  public final ConstraintLayout cameraContainer;
-
-  @NonNull
   public final OverlayView overlay;
 
   @NonNull
-  public final FloatingActionButton scanButton;
+  public final Button scanButton;
+
+  @NonNull
+  public final TextView tvStatus;
 
   @NonNull
   public final PreviewView viewFinder;
 
   @NonNull
-  public final FloatingActionButton voiceCommandButton;
+  public final Button voiceCommandButton;
 
-  private FragmentCameraBinding(@NonNull ConstraintLayout rootView, @NonNull Button arModeButton,
-      @NonNull ConstraintLayout cameraContainer, @NonNull OverlayView overlay,
-      @NonNull FloatingActionButton scanButton, @NonNull PreviewView viewFinder,
-      @NonNull FloatingActionButton voiceCommandButton) {
+  private FragmentCameraBinding(@NonNull CoordinatorLayout rootView, @NonNull Button arModeButton,
+      @NonNull OverlayView overlay, @NonNull Button scanButton, @NonNull TextView tvStatus,
+      @NonNull PreviewView viewFinder, @NonNull Button voiceCommandButton) {
     this.rootView = rootView;
     this.arModeButton = arModeButton;
-    this.cameraContainer = cameraContainer;
     this.overlay = overlay;
     this.scanButton = scanButton;
+    this.tvStatus = tvStatus;
     this.viewFinder = viewFinder;
     this.voiceCommandButton = voiceCommandButton;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -86,8 +85,6 @@ public final class FragmentCameraBinding implements ViewBinding {
         break missingId;
       }
 
-      ConstraintLayout cameraContainer = (ConstraintLayout) rootView;
-
       id = R.id.overlay;
       OverlayView overlay = ViewBindings.findChildViewById(rootView, id);
       if (overlay == null) {
@@ -95,8 +92,14 @@ public final class FragmentCameraBinding implements ViewBinding {
       }
 
       id = R.id.scanButton;
-      FloatingActionButton scanButton = ViewBindings.findChildViewById(rootView, id);
+      Button scanButton = ViewBindings.findChildViewById(rootView, id);
       if (scanButton == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_status;
+      TextView tvStatus = ViewBindings.findChildViewById(rootView, id);
+      if (tvStatus == null) {
         break missingId;
       }
 
@@ -107,13 +110,13 @@ public final class FragmentCameraBinding implements ViewBinding {
       }
 
       id = R.id.voiceCommandButton;
-      FloatingActionButton voiceCommandButton = ViewBindings.findChildViewById(rootView, id);
+      Button voiceCommandButton = ViewBindings.findChildViewById(rootView, id);
       if (voiceCommandButton == null) {
         break missingId;
       }
 
-      return new FragmentCameraBinding((ConstraintLayout) rootView, arModeButton, cameraContainer,
-          overlay, scanButton, viewFinder, voiceCommandButton);
+      return new FragmentCameraBinding((CoordinatorLayout) rootView, arModeButton, overlay,
+          scanButton, tvStatus, viewFinder, voiceCommandButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
